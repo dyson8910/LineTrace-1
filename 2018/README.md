@@ -1,0 +1,8 @@
+# 2018年度のLineTraceで使用したファイル
+## RobotArduino
+ArduinoUnoに書き込むスケッチ
+ハードの変更があればそれに合わせてポートを変えたりする必要がある
+
+## MainPCApp_ratest
+MongoDBのデータをBluetoothを用いてArduinoUnoに接続したRN42評価キットに送信したり、DBのデータの管理を行うプロジェクト
+Visual Studio 2015では正常に動くが、2017ではダメだった。

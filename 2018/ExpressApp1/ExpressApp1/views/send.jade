@@ -1,0 +1,587 @@
+﻿html(lang='ja')
+head
+    meta(charset='utf-8')
+    |     
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    |     
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    |     
+    meta(name='description', content='')
+    |     
+    meta(name='author', content='')
+    |     
+    title LTGP
+    |     
+    script(src='js/jquery-2.2.3.min.js')
+    // Bootstrap Core CSS
+    link(href='css/bootstrap.min.css', rel='stylesheet')
+    |     
+    link(href='css/custom.css', rel='stylesheet')
+    |     
+    link(href='css/bootstrap-toggle.min.css', rel='stylesheet')
+    |     
+    script(src='js/script.js')
+    // Bootstrap Core JavaScript
+    script(src='js/bootstrap.min.js')
+    |     
+    script(src='js/bootstrap-toggle.min.js')
+    // Latest compiled and minified CSS
+    link(rel='stylesheet', src='css/bootstrap-select.min.css')
+    // Latest compiled and minified JavaScript
+    script(src='js/bootstrap-select.min.js')
+    // Custom CSS
+    style.
+      body {
+          padding-top: 70px;
+      }
+    // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    // WARNING: Respond.js doesn't work if you view the page via file://
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+      |     
+      script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
+    |     
+    script.
+      function entryChange() {
+      radio = document.getElementsByName('mode')
+      if (radio[1].checked) {
+      document.getElementById('PIDSPEED').style.display = "";
+      document.getElementById('PID1').style.display = "";
+      document.getElementById('PID2').style.display = "";
+      document.getElementById('PID3').style.display = "";
+      document.getElementById('ONOFFSPEED').style.display = "none";
+      document.getElementById('ONOFF1').style.display = "none";
+      document.getElementById('ONOFF2').style.display = "none";
+      document.getElementById('ONOFF3').style.display = "none";
+      document.getElementById('ONOFF4').style.display = "none";
+      document.getElementById('ONOFF5').style.display = "none";
+      document.getElementById('ONOFF6').style.display = "none";
+      document.getElementById('ONOFF7').style.display = "none";
+      } else if (radio[0].checked) {
+      document.getElementById('PIDSPEED').style.display = "none";
+      document.getElementById('PID1').style.display = "none";
+      document.getElementById('PID2').style.display = "none";
+      document.getElementById('PID3').style.display = "none";
+      document.getElementById('ONOFFSPEED').style.display = "";
+      document.getElementById('ONOFF1').style.display = "";
+      document.getElementById('ONOFF2').style.display = "";
+      document.getElementById('ONOFF3').style.display = "";
+      document.getElementById('ONOFF4').style.display = "";
+      document.getElementById('ONOFF5').style.display = "";
+      document.getElementById('ONOFF6').style.display = "";
+      document.getElementById('ONOFF7').style.display = "";
+      }
+      }
+      window.onload = entryChange;
+body
+    // Navigation
+    //
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+      <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">LineTrace Grandprix</a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+      <li>
+      <a href="#">About</a>
+      </li>
+      <li>
+      <a href="#">Services</a>
+      </li>
+      <li>
+      <a href="#">Contact</a>
+      </li>
+      </ul>
+      </div>
+      </div>
+      </nav>
+    // Page Content
+    .container
+      .col-lg-12.text-center
+        image(src='image/LTGranprix.png', width='40%')
+      |     
+      br
+      br
+      //
+        <div id="direct" class="row"　 >
+        <br><br>
+        <div class = "col-sm-offset-3 col-sm-6 ">
+        <div class="panel panel-default">
+        <div class="panel-heading">
+        <h3 class="panel-title">Speed</h3>
+        </div>
+        <div class="panel-body">
+        Panel content
+        </div>
+        </div>
+        </div>
+        <div class = "col-sm-offset-1 col-sm-5">
+        <div class="panel panel-default">
+        <div class="panel-heading">
+        <h3 class="panel-title">oox</h3>
+        </div>
+        <div class="panel-body">
+        Panel content
+        </div>
+        </div>
+        </div>
+        <div class = "col-sm-5">
+        <div class="panel panel-default">
+        <div class="panel-heading">
+        <h3 class="panel-title">oxx</h3>
+        </div>
+        <div class="panel-body">
+        Panel content
+        </div>
+        </div>
+        </div>
+        <div class = "col-sm-offset-1 col-sm-5">
+        <div class="panel panel-default">
+        <div class="panel-heading">
+        <h3 class="panel-title">xxo</h3>
+        </div>
+        <div class="panel-body">
+        Panel content
+        </div>
+        </div>
+        </div>
+        <div class = "col-sm-5">
+        <div class="panel panel-default">
+        <div class="panel-heading">
+        <h3 class="panel-title">xoo</h3>
+        </div>
+        <div class="panel-body">
+        Panel content
+        </div>
+        </div>
+        </div>
+        </div>
+      #pid.row(style='display:none')
+        br
+        br
+        |       
+        .col-sm-4
+          .panel.panel-default
+            .panel-heading
+              h3.panel-title P_gain
+            |           
+            .panel-body
+              | Panel content
+        |       
+        .col-sm-4
+          .panel.panel-default
+            .panel-heading
+              h3.panel-title I_gain
+            |           
+            .panel-body
+              | Panel content
+        |       
+        .col-sm-4
+          .panel.panel-default
+            .panel-heading
+              h3.panel-title D_gain
+            |           
+            .panel-body
+              | Panel content
+      // row_ PID
+      script.
+        $(function() {
+        $('#toggle-event').change(function() {
+        $('#console-event').html('Toggle: ' + $(this).prop('checked'))
+        if($(this).prop('checked')==false){
+        $('#ON-OFF').hide();
+        $('#PID').show();
+        }
+        else{
+        $('#ON-OFF').show();
+        $('#PID').hide();
+        }
+        })
+        });
+      //
+        <center>
+        <input id = "toggle-event" type="checkbox" checked data-toggle="toggle" data-on="DIRECT" data-off="PID" data-onstyle="success" data-offstyle="info" onclick = "hyoji1(0)">
+        </center>
+      center
+        h2 &#x30C7;&#x30FC;&#x30BF;&#x9001;&#x4FE1;&#x30D5;&#x30A9;&#x30FC;&#x30E0;
+      |     
+      br
+      br
+      |     
+      form(action='/send', method='POST' onSubmit='return double()')
+        //
+          <div class = "col-sm-6 sample">
+          <label ><input type="radio" name="mode" value="ON-OFF" onclick="entryChange();" checked="checked">
+          ON-OFF制御</label>
+          <label><input type="radio" name="mode" value="PID" onclick="entryChange();">PID制御</label>
+        .col-sm-4
+          input(type='text', name='name', placeholder='名前' required)
+        |      
+        .sample.col-sm-8
+          input#on(type='radio', name='mode', onclick='entryChange();', value='ON-OFF', checked='')
+          |          
+          label.switch-on(for='on') ON-OFF&#x5236;&#x5FA1;
+          |          
+          input#off(type='radio', name='mode', onclick='entryChange();', value='PID')
+          |          
+          label.switch-off(for='off') PID&#x5236;&#x5FA1;
+        |      
+        br
+        |      
+        br
+        br
+        |        
+        table.table.table-striped(border='0', cellspacing='0', cellpadding='0')
+          #ON-OFF
+            tr#ONOFFSPEED
+              th
+                | &#x5168;&#x4F53;&#x30B9;&#x30D4;&#x30FC;&#x30C9;
+              |              
+              td
+              td
+                | &#x30B9;&#x30D4;&#x30FC;&#x30C9;
+                input(type='number', name='onoffspeed', value='0', min='0', max='200', step='1' required)
+            |           
+            tr#ONOFF1
+              th
+                select(name='rule1' style="color:#000000")
+                  option(value='none') &#x672A;&#x8A2D;&#x5B9A;
+                  |                    
+                  option(value='000') &#x2715;&#x2715;&#x2715;
+                  |                    
+                  option(value='100') &cir;&#x2715;&#x2715;
+                  |                    
+                  option(value='010') &#x2715;&cir;&#x2715;
+                  |                    
+                  option(value='001') &#x2715;&#x2715;&cir;
+                  |                    
+                  option(value='110') &cir;&cir;&#x2715;
+                  |                    
+                  option(value='101') &cir;&#x2715;&cir;
+                  |                    
+                  option(value='011') &#x2715;&cir;&cir;
+                |                 &#x306E;&#x3068;&#x304D;
+              |              
+              td
+                | &#x5DE6;&#x8F2A;
+                select(name='rule1l' style="color:#000000")
+                  option(value='for') &#x6B63;&#x8EE2;
+                  |                    
+                  option(value='back') &#x9006;&#x8EE2;
+              |              
+              td
+                | &#x30B9;&#x30D4;&#x30FC;&#x30C9;
+                input(type='number', name='rule1ls', value='0', min='0', max='100', step='1' required)
+                | %
+              |              
+              td
+                | &#x53F3;&#x8F2A;
+                select(name='rule1r' style="color:#000000")
+                  option(value='for') &#x6B63;&#x8EE2;
+                  |                    
+                  option(value='back') &#x9006;&#x8EE2;
+              |              
+              td
+                | &#x30B9;&#x30D4;&#x30FC;&#x30C9;
+                input(type='number', name='rule1rs', value='0', min='0', max='100', step='1' required)
+                | %
+            |           
+            tr#ONOFF2
+              th
+                select(name='rule2' style="color:#000000")
+                  option(value='none') &#x672A;&#x8A2D;&#x5B9A;
+                  |                    
+                  option(value='000') &#x2715;&#x2715;&#x2715;
+                  |                    
+                  option(value='100') &cir;&#x2715;&#x2715;
+                  |                    
+                  option(value='010') &#x2715;&cir;&#x2715;
+                  |                    
+                  option(value='001') &#x2715;&#x2715;&cir;
+                  |                    
+                  option(value='110') &cir;&cir;&#x2715;
+                  |                    
+                  option(value='101') &cir;&#x2715;&cir;
+                  |                    
+                  option(value='011') &#x2715;&cir;&cir;
+                |                 &#x306E;&#x3068;&#x304D;
+              |              
+              td
+                | &#x5DE6;&#x8F2A;
+                select(name='rule2l' style="color:#000000")
+                  option(value='for') &#x6B63;&#x8EE2;
+                  |                    
+                  option(value='back') &#x9006;&#x8EE2;
+              |              
+              td
+                | &#x30B9;&#x30D4;&#x30FC;&#x30C9;
+                input(type='number', name='rule2ls', value='0', min='0', max='100', step='1' required)
+                | %
+              |              
+              td
+                | &#x53F3;&#x8F2A;
+                select(name='rule2r' style="color:#000000")
+                  option(value='for') &#x6B63;&#x8EE2;
+                  |                    
+                  option(value='back') &#x9006;&#x8EE2;
+              |              
+              td
+                | &#x30B9;&#x30D4;&#x30FC;&#x30C9;
+                input(type='number', name='rule2rs', value='0', min='0', max='100', step='1' required)
+                | %
+            |           
+            tr#ONOFF3
+              th
+                select(name='rule3' style="color:#000000")
+                  option(value='none') &#x672A;&#x8A2D;&#x5B9A;
+                  |                    
+                  option(value='000') &#x2715;&#x2715;&#x2715;
+                  |                    
+                  option(value='100') &cir;&#x2715;&#x2715;
+                  |                    
+                  option(value='010') &#x2715;&cir;&#x2715;
+                  |                    
+                  option(value='001') &#x2715;&#x2715;&cir;
+                  |                    
+                  option(value='110') &cir;&cir;&#x2715;
+                  |                    
+                  option(value='101') &cir;&#x2715;&cir;
+                  |                    
+                  option(value='011') &#x2715;&cir;&cir;
+                |                 &#x306E;&#x3068;&#x304D;
+              |              
+              td
+                | &#x5DE6;&#x8F2A;
+                select(name='rule3l' style="color:#000000")
+                  option(value='for') &#x6B63;&#x8EE2;
+                  |                    
+                  option(value='back') &#x9006;&#x8EE2;
+              |              
+              td
+                | &#x30B9;&#x30D4;&#x30FC;&#x30C9;
+                input(type='number', name='rule3ls', value='0', min='0', max='100', step='1' required)
+                | %
+              |              
+              td
+                | &#x53F3;&#x8F2A;
+                select(name='rule3r' style="color:#000000")
+                  option(value='for') &#x6B63;&#x8EE2;
+                  |                    
+                  option(value='back') &#x9006;&#x8EE2;
+              |              
+              td
+                | &#x30B9;&#x30D4;&#x30FC;&#x30C9;
+                input(type='number', name='rule3rs', value='0', min='0', max='100', step='1' required)
+                | %
+            |           
+            tr#ONOFF4
+              th
+                select(name='rule4' style="color:#000000")
+                  option(value='none') &#x672A;&#x8A2D;&#x5B9A;
+                  |                    
+                  option(value='000') &#x2715;&#x2715;&#x2715;
+                  |                    
+                  option(value='100') &cir;&#x2715;&#x2715;
+                  |                    
+                  option(value='010') &#x2715;&cir;&#x2715;
+                  |                    
+                  option(value='001') &#x2715;&#x2715;&cir;
+                  |                    
+                  option(value='110') &cir;&cir;&#x2715;
+                  |                    
+                  option(value='101') &cir;&#x2715;&cir;
+                  |                    
+                  option(value='011') &#x2715;&cir;&cir;
+                |                 &#x306E;&#x3068;&#x304D;
+              |              
+              td
+                | &#x5DE6;&#x8F2A;
+                select(name='rule4l' style="color:#000000")
+                  option(value='for') &#x6B63;&#x8EE2;
+                  |                    
+                  option(value='back') &#x9006;&#x8EE2;
+              |              
+              td
+                | &#x30B9;&#x30D4;&#x30FC;&#x30C9;
+                input(type='number', name='rule4ls', value='0', min='0', max='100', step='1' required)
+                | %
+              |              
+              td
+                | &#x53F3;&#x8F2A;
+                select(name='rule4r' style="color:#000000")
+                  option(value='for') &#x6B63;&#x8EE2;
+                  |                    
+                  option(value='back') &#x9006;&#x8EE2;
+              |              
+              td
+                | &#x30B9;&#x30D4;&#x30FC;&#x30C9;
+                input(type='number', name='rule4rs', value='0', min='0', max='100', step='1' required)
+                | %
+            |           
+            tr#ONOFF5
+              th
+                select(name='rule5' style="color:#000000")
+                  option(value='none') &#x672A;&#x8A2D;&#x5B9A;
+                  |                    
+                  option(value='000') &#x2715;&#x2715;&#x2715;
+                  |                    
+                  option(value='100') &cir;&#x2715;&#x2715;
+                  |                    
+                  option(value='010') &#x2715;&cir;&#x2715;
+                  |                    
+                  option(value='001') &#x2715;&#x2715;&cir;
+                  |                    
+                  option(value='110') &cir;&cir;&#x2715;
+                  |                    
+                  option(value='101') &cir;&#x2715;&cir;
+                  |                    
+                  option(value='011') &#x2715;&cir;&cir;
+                |                 &#x306E;&#x3068;&#x304D;
+              |              
+              td
+                | &#x5DE6;&#x8F2A;
+                select(name='rule5l' style="color:#000000")
+                  option(value='for') &#x6B63;&#x8EE2;
+                  |                    
+                  option(value='back') &#x9006;&#x8EE2;
+              |              
+              td
+                | &#x30B9;&#x30D4;&#x30FC;&#x30C9;
+                input(type='number', name='rule5ls', value='0', min='0', max='100', step='1' required)
+                | %
+              |              
+              td
+                | &#x53F3;&#x8F2A;
+                select(name='rule5r' style="color:#000000")
+                  option(value='for') &#x6B63;&#x8EE2;
+                  |                    
+                  option(value='back') &#x9006;&#x8EE2;
+              |              
+              td
+                | &#x30B9;&#x30D4;&#x30FC;&#x30C9;
+                input(type='number', name='rule5rs', value='0', min='0', max='100', step='1' required)
+                | %
+            |           
+            tr#ONOFF6
+              th
+                select(name='rule6' style="color:#000000")
+                  option(value='none') &#x672A;&#x8A2D;&#x5B9A;
+                  |                    
+                  option(value='000') &#x2715;&#x2715;&#x2715;
+                  |                    
+                  option(value='100') &cir;&#x2715;&#x2715;
+                  |                    
+                  option(value='010') &#x2715;&cir;&#x2715;
+                  |                    
+                  option(value='001') &#x2715;&#x2715;&cir;
+                  |                    
+                  option(value='110') &cir;&cir;&#x2715;
+                  |                    
+                  option(value='101') &cir;&#x2715;&cir;
+                  |                    
+                  option(value='011') &#x2715;&cir;&cir;
+                |                 &#x306E;&#x3068;&#x304D;
+              |              
+              td
+                | &#x5DE6;&#x8F2A;
+                select(name='rule6l' style="color:#000000")
+                  option(value='for') &#x6B63;&#x8EE2;
+                  |                    
+                  option(value='back') &#x9006;&#x8EE2;
+              |              
+              td
+                | &#x30B9;&#x30D4;&#x30FC;&#x30C9;
+                input(type='number', name='rule6ls', value='0', min='0', max='100', step='1' required)
+                | %
+              |              
+              td
+                | &#x53F3;&#x8F2A;
+                select(name='rule6r' style="color:#000000")
+                  option(value='for') &#x6B63;&#x8EE2;
+                  |                    
+                  option(value='back') &#x9006;&#x8EE2;
+              |              
+              td
+                | &#x30B9;&#x30D4;&#x30FC;&#x30C9;
+                input(type='number', name='rule6rs', value='0', min='0', max='100', step='1' required)
+                | %
+            |           
+            tr#ONOFF7
+              th
+                select(name='rule7' style="color:#000000")
+                  option(value='none') &#x672A;&#x8A2D;&#x5B9A;
+                  |                    
+                  option(value='000') &#x2715;&#x2715;&#x2715;
+                  |                    
+                  option(value='100') &cir;&#x2715;&#x2715;
+                  |                    
+                  option(value='010') &#x2715;&cir;&#x2715;
+                  |                    
+                  option(value='001') &#x2715;&#x2715;&cir;
+                  |                    
+                  option(value='110') &cir;&cir;&#x2715;
+                  |                    
+                  option(value='101') &cir;&#x2715;&cir;
+                  |                    
+                  option(value='011') &#x2715;&cir;&cir;
+                |                 &#x306E;&#x3068;&#x304D;
+              |              
+              td
+                | &#x5DE6;&#x8F2A;
+                select(name='rule7l' style="color:#000000")
+                  option(value='for') &#x6B63;&#x8EE2;
+                  |                    
+                  option(value='back') &#x9006;&#x8EE2;
+              |              
+              td
+                | &#x30B9;&#x30D4;&#x30FC;&#x30C9;
+                input(type='number', name='rule7ls', value='0', min='0', max='100', step='1' required)
+                | %
+              |              
+              td
+                | &#x53F3;&#x8F2A;
+                select(name='rule7r' style="color:#000000")
+                  option(value='for') &#x6B63;&#x8EE2;
+                  |                    
+                  option(value='back') &#x9006;&#x8EE2;
+              |              
+              td
+                | &#x30B9;&#x30D4;&#x30FC;&#x30C9;
+                input(type='number', name='rule7rs', value='0', min='0', max='100', step='1' required)
+                | %
+          |           
+          #PID.col-sm-12
+            tr#PIDSPEED
+              th &#x30B9;&#x30D4;&#x30FC;&#x30C9;
+              |              
+              td
+                input(type='number', name='SPEED', value='0', min='0', max='200', step='1' required)
+            |           
+            tr#PID1
+              th P
+              |              
+              td
+                input(type='number', name='P', value='0', min='0', max='200', step='1' required)
+            |           
+            tr#PID2
+              th I
+              |              
+              td
+                input(type='number', name='I', value='0', min='0', max='200', step='1' required)
+            |           
+            tr#PID3
+              th D
+              |              
+              td
+                input(type='number', name='D', value='0', min='0', max='200', step='1' required)
+        |        
+        input.btn.btn-primary(type='submit', value='送信')
+    // /.container
+    // jQuery Version 1.11.1

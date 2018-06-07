@@ -1,0 +1,343 @@
+html(lang='ja')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    title ライントレース ロボットカーを動かしてみよう
+    script(src='js/jquery-2.2.3.min.js')
+    // Bootstrap Core CSS
+    link(href='css/bootstrap.min.css', rel='stylesheet')
+    link(href='css/custom.css', rel='stylesheet')
+    link(href='css/bootstrap-toggle.min.css', rel='stylesheet')
+    script(src='js/script.js')
+    // Bootstrap Core JavaScript
+    script(src='js/bootstrap.min.js')
+    script(src='js/bootstrap-toggle.min.js')
+    // Latest compiled and minified CSS
+    link(rel='stylesheet', src='css/bootstrap-select.min.css')
+    // Latest compiled and minified JavaScript
+    script(src='js/bootstrap-select.min.js')
+    // Custom CSS
+    style.
+      body {
+      padding-top: 70px;
+      /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+      }
+    // HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+    // WARNING: Respond.js doesn't work if you view the page via file://
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+      script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
+    script.
+      function entryChange() {
+      radio = document.getElementsByName('mode')
+      if (radio[1].checked) {
+      document.getElementById('PIDSPEED').style.display = "";
+      document.getElementById('PID1').style.display = "";
+      document.getElementById('PID2').style.display = "";
+      document.getElementById('PID3').style.display = "";
+      document.getElementById('ONOFFSPEED').style.display = "none";
+      document.getElementById('ONOFF1').style.display = "none";
+      document.getElementById('ONOFF2').style.display = "none";
+      document.getElementById('ONOFF3').style.display = "none";
+      document.getElementById('ONOFF4').style.display = "none";
+      document.getElementById('ONOFF5').style.display = "none";
+      document.getElementById('ONOFF6').style.display = "none";
+      document.getElementById('ONOFF7').style.display = "none";
+      } else if (radio[0].checked) {
+      document.getElementById('PIDSPEED').style.display = "none";
+      document.getElementById('PID1').style.display = "none";
+      document.getElementById('PID2').style.display = "none";
+      document.getElementById('PID3').style.display = "none";
+      document.getElementById('ONOFFSPEED').style.display = "";
+      document.getElementById('ONOFF1').style.display = "";
+      document.getElementById('ONOFF2').style.display = "";
+      document.getElementById('ONOFF3').style.display = "";
+      document.getElementById('ONOFF4').style.display = "";
+      document.getElementById('ONOFF5').style.display = "";
+      document.getElementById('ONOFF6').style.display = "";
+      document.getElementById('ONOFF7').style.display = "";
+      }
+      }
+      window.onload = entryChange;
+  body
+    // Page Content
+    .container
+      .col-lg-12.text-center(style='margin-bottom:15px;')
+        image(src='image/LTGranprix.png', width='40%')
+      br
+      br
+      // row_ PID
+      center
+        h2 データ送信フォーム
+      br
+      br
+      form(action='/send', method='POST')
+        .form-group
+          // submitに応じて/sendにpost
+          .col-sm-4
+            input(type='text', name='name', placeholder='名前(必須)', required='')
+          .sample.col-sm-8
+            input#on(type='radio', name='mode', onclick='entryChange();', value='ON-OFF', checked='')
+            label.switch-on(for='on') ON-OFF制御
+            input#off(type='radio', name='mode', onclick='entryChange();', value='PID')
+            label.switch-off(for='off') PID制御
+          br
+          br
+          br
+          table.table.table-striped(border='0', cellspacing='0', cellpadding='0')
+            // table-stripedでストライプにしてくれる
+            #ON-OFF
+              tr#ONOFFSPEED
+                th
+                  | 全体スピード
+                td
+                td
+                  | スピード
+                  input(type='number', name='onoffspeed', value='0', min='0', max='200', step='1')
+              tr#ONOFF1
+                th
+                  div(name='rule1', value='010') □■□
+                  |                 のとき
+                td
+                  | すすむ/もどる
+                  select(name='rule1fb')
+                    option.sample(value='for') すすむ
+                    option(value='back') もどる
+                td
+                  | パワー
+                  input(type='number', name='rule1power', value='0', min='0', max='100', step='1')
+                  | %
+                td まがりかた
+                td 左
+                td
+                  input#bar1(type='range', name='rule1bar', value='50', min='0', max='100', step='1', data-input='box1')
+                  input#box1(type='number', name='rule1box', value='50', min='0', max='100', data-input='bar1')
+                  script.
+                    $(window).ready(function(){
+                    $('#bar1').on('input',function(){
+                    var input_id = '#'+$(this).attr('data-input');
+                    var val = $(this).val();
+                    $(input_id).val(val)
+                    });
+                    $('#box1').on('input',function(){
+                    var input_id = '#'+$(this).attr('data-input');
+                    var val = $(this).val();
+                    $(input_id).val(val)
+                    });
+                    });
+                td 右 
+              tr#ONOFF2
+                th
+                  div(name='rule2', value='110') ■■□
+                  |                 のとき
+                td
+                  | すすむ/もどる
+                  select(name='rule2fb')
+                    option(value='for') すすむ
+                    option(value='back') もどる
+                td
+                  | パワー
+                  input(type='number', name='rule2power', value='0', min='0', max='100', step='1')
+                  | %
+                td まがりかた
+                td 左
+                td
+                  input#bar2(type='range', name='rule2bar', value='50', min='0', max='100', step='1', data-input='box2')
+                  input#box2(type='number', name='rule2box', value='50', min='0', max='100', data-input='bar2')
+                  script.
+                    $(window).ready(function(){
+                    $('#bar2').on('input',function(){
+                    var input_id = '#'+$(this).attr('data-input');
+                    var val = $(this).val();
+                    $(input_id).val(val)
+                    });
+                    $('#box2').on('input',function(){
+                    var input_id = '#'+$(this).attr('data-input');
+                    var val = $(this).val();
+                    $(input_id).val(val)
+                    });
+                    });
+                td 右 
+              tr#ONOFF3
+                th
+                  div(name='rule3', value='100') ■□□
+                  |                 のとき
+                td
+                  | すすむ/もどる
+                  select(name='rule3fb')
+                    option(value='for') すすむ
+                    option(value='back') もどる
+                td
+                  | パワー
+                  input(type='number', name='rule3power', value='0', min='0', max='100', step='1')
+                  | %
+                td まがりかた
+                td 左
+                td
+                  input#bar3(type='range', name='rule3bar', value='50', min='0', max='100', step='1', data-input='box3')
+                  input#box3(type='number', name='rule3box', value='50', min='0', max='100', data-input='bar3')
+                  script.
+                    $(window).ready(function(){
+                    $('#bar3').on('input',function(){
+                    var input_id = '#'+$(this).attr('data-input');
+                    var val = $(this).val();
+                    $(input_id).val(val)
+                    });
+                    $('#box3').on('input',function(){
+                    var input_id = '#'+$(this).attr('data-input');
+                    var val = $(this).val();
+                    $(input_id).val(val)
+                    });
+                    });
+                td 右 
+              tr#ONOFF4
+                th
+                  div(name='rule4', value='011') □■■
+                  |                 のとき
+                td
+                  | すすむ/もどる
+                  select(name='rule4fb')
+                    option(value='for') すすむ
+                    option(value='back') もどる
+                td
+                  | パワー
+                  input(type='number', name='rule4power', value='0', min='0', max='100', step='1')
+                  | %
+                td まがりかた
+                td 左
+                td
+                  input#bar4(type='range', name='rule4bar', value='50', min='0', max='100', step='1', data-input='box4')
+                  input#box4(type='number', name='rule4box', value='50', min='0', max='100', data-input='bar4')
+                  script.
+                    $(window).ready(function(){
+                    $('#bar4').on('input',function(){
+                    var input_id = '#'+$(this).attr('data-input');
+                    var val = $(this).val();
+                    $(input_id).val(val)
+                    });
+                    $('#box4').on('input',function(){
+                    var input_id = '#'+$(this).attr('data-input');
+                    var val = $(this).val();
+                    $(input_id).val(val)
+                    });
+                    });
+                td 右 
+              tr#ONOFF5
+                th
+                  div(name='rule5', value='011') □□■
+                  |                 のとき
+                td
+                  | すすむ/もどる
+                  select(name='rule5fb')
+                    option(value='for') すすむ
+                    option(value='back') もどる
+                td
+                  | パワー
+                  input(type='number', name='rule5power', value='0', min='0', max='100', step='1')
+                  | %
+                td まがりかた
+                td 左
+                td
+                  input#bar5(type='range', name='rule5bar', value='50', min='0', max='100', step='1', data-input='box5')
+                  input#box5(type='number', name='rule5box', value='50', min='0', max='100', data-input='bar5')
+                  script.
+                    $(window).ready(function(){
+                    $('#bar5').on('input',function(){
+                    var input_id = '#'+$(this).attr('data-input');
+                    var val = $(this).val();
+                    $(input_id).val(val)
+                    });
+                    $('#box5').on('input',function(){
+                    var input_id = '#'+$(this).attr('data-input');
+                    var val = $(this).val();
+                    $(input_id).val(val)
+                    });
+                    });
+                td 右 
+              tr#ONOFF6
+                th
+                  div(name='rule6', value='101') ■□■
+                  |                 のとき
+                td
+                  | すすむ/もどる
+                  select(name='rule6fb')
+                    option(value='for') すすむ
+                    option(value='back') もどる
+                td
+                  | パワー
+                  input(type='number', name='rule6power', value='0', min='0', max='100', step='1')
+                  | %
+                td まがりかた
+                td 左
+                td
+                  input#bar6(type='range', name='rule6bar', value='50', min='0', max='100', step='1', data-input='box6')
+                  input#box6(type='number', name='rule6box', value='50', min='0', max='100', data-input='bar6')
+                  script.
+                    $(window).ready(function(){
+                    $('#bar6').on('input',function(){
+                    var input_id = '#'+$(this).attr('data-input');
+                    var val = $(this).val();
+                    $(input_id).val(val)
+                    });
+                    $('#box6').on('input',function(){
+                    var input_id = '#'+$(this).attr('data-input');
+                    var val = $(this).val();
+                    $(input_id).val(val)
+                    });
+                    });
+                td 右 
+              tr#ONOFF7
+                th
+                  div(name='rule7', value='000') □□□
+                  |                 のとき
+                td
+                  | すすむ/もどる
+                  select(name='rule7fb')
+                    option(value='for') すすむ
+                    option(value='back') もどる
+                td
+                  | パワー
+                  input(type='number', name='rule7power', value='0', min='0', max='100', step='1')
+                  | %
+                td まがりかた
+                td 左
+                td
+                  input#bar7(type='range', name='rule7bar', value='50', min='0', max='100', step='1', data-input='box7')
+                  input#box7(type='number', name='rule7box', value='50', min='0', max='100', data-input='bar7')
+                  script.
+                    $(window).ready(function(){
+                    $('#bar7').on('input',function(){
+                    var input_id = '#'+$(this).attr('data-input');
+                    var val = $(this).val();
+                    $(input_id).val(val)
+                    });
+                    $('#box7').on('input',function(){
+                    var input_id = '#'+$(this).attr('data-input');
+                    var val = $(this).val();
+                    $(input_id).val(val)
+                    });
+                    });
+                td 右 
+            #PID.col-sm-12
+              tr#PIDSPEED
+                th スピード
+                td
+                  input(type='number', name='SPEED', value='0', min='0', max='200', step='1')
+              tr#PID1
+                th P
+                td
+                  input(type='number', name='P', value='0', min='0', max='200', step='1')
+              tr#PID2
+                th I
+                td
+                  input(type='number', name='I', value='0', min='0', max='200', step='1')
+              tr#PID3
+                th D
+                td
+                  input(type='number', name='D', value='0', min='0', max='200', step='1')
+          input.btn.btn-primary(type='submit', value='送信')
+    // /.container
+    // jQuery Version 1.11.1

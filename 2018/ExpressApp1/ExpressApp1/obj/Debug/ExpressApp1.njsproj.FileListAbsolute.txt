@@ -1,0 +1,6 @@
+C:\Users\tsuno\Documents\program\ExpressApp1\ExpressApp1\obj\Debug\ExpressApp1.njsprojResolveAssemblyReference.cache
+C:\Users\tsuno\Documents\program\ExpressApp1\ExpressApp1\bin\Microsoft.NodejsTools.WebRole.dll
+C:\Users\M-Onitsuka\Desktop\LTGP_programs\LTGP_programs\ExpressApp1\ExpressApp1\obj\Debug\ExpressApp1.njsprojResolveAssemblyReference.cache
+C:\Users\M-Onitsuka\Desktop\LTGP_programs\LTGP_programs\ExpressApp1\ExpressApp1\bin\Microsoft.NodejsTools.WebRole.dll
+C:\Users\M-Onitsuka\Desktop\LTGP_programs_aratame\LTGP_programs\ExpressApp1\ExpressApp1\obj\Debug\ExpressApp1.njsprojResolveAssemblyReference.cache
+C:\Users\M-Onitsuka\Desktop\LTGP_programs_aratame\LTGP_programs\ExpressApp1\ExpressApp1\bin\Microsoft.NodejsTools.WebRole.dll
